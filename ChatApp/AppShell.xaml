@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ChatApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ChatApp"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar >
+        <ShellContent
+        Title="All"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+        <ShellContent
+        Title="Groups"
+        ContentTemplate="{DataTemplate local:GroupChatPage}"
+        Route="GroupChatPage" />
+        <ShellContent
+        Title="OneOnOne"
+        ContentTemplate="{DataTemplate local:OneOnOnePage}"
+        Route="OneOnOnePage" />
+    </TabBar>
+</Shell>

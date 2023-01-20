@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChatApp.OneOnOnePage"
+             Title="OneOnOnePage">
+    <Grid
+            Padding="20,0,20,0"
+            ColumnDefinitions="110,*"
+            RowDefinitions="auto,*,auto,20">
+
+        <ScrollView HorizontalOptions="Center" 
+                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1">
+            <CollectionView ItemsSource="{Binding chatLog}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type x:String}">
+                        <Grid ColumnDefinitions="auto" RowDefinitions="50"
+                              Padding="1">
+                            <Border 
+                                StrokeThickness="0"
+                                BackgroundColor="#EEEEEEEE">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="50,50,50,50" />
+                                </Border.StrokeShape>
+                            </Border>
+                            <Label
+                                    Text="{Binding .}"
+                                    TextColor="Black"
+                                    FontSize="18"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Margin="0,-24,0,0"
+                                    Padding="10"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <Entry
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                x:Name="userIdField"
+                Placeholder="Type user id"
+                FontSize="18"
+                HorizontalOptions="Center" />
+        <Entry
+                Grid.Column="1"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Completed="sendButton_Clicked" 
+                x:Name="UserChatField"
+                Placeholder="Type your message"
+                FontSize="18"/>
+        <Button
+                Grid.Column="0"
+                Grid.Row="2"
+                x:Name="connectionId"
+                Text="Session Id"
+                Clicked="connectionId_Clicked"/>
+    </Grid>
+</ContentPage>

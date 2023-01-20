@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChatApp.GroupChatPage"
+             xmlns:codebehind="clr-namespace:ChatApp"
+             x:DataType="codebehind:GroupChatPage"
+             Title="GroupChatPage">
+    <Grid
+            Padding="20,0,20,0"
+            ColumnDefinitions="110,*"
+            RowDefinitions="auto,*,auto,20">
+
+        <ScrollView HorizontalOptions="Center" 
+                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1">
+            <CollectionView ItemsSource="{Binding chatLog}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type x:String}">
+                        <Grid ColumnDefinitions="auto" RowDefinitions="50"
+                              Padding="1">
+                            <Border 
+                                StrokeThickness="0"
+                                BackgroundColor="#EEEEEEEE">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="50,50,50,50" />
+                                </Border.StrokeShape>
+                            </Border>
+                            <Label
+                                    Text="{Binding .}"
+                                    TextColor="Black"
+                                    FontSize="18"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Margin="0,-24,0,0"
+                                    Padding="10"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <Entry
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.Row="0"
+                Margin="10"
+                x:Name="myGroupNameField"
+                Placeholder="Type the group you want to join"
+                FontSize="18"/>
+
+        <Entry
+                Grid.Column="1"
+                Grid.Row="2"
+                x:Name="myGroupChatMessageField"
+                Placeholder="Type your message"
+                Completed="sendButton_Clicked" 
+                FontSize="18"
+                IsEnabled="False"/>
+
+        <Button
+                Grid.Column="0"
+                Grid.Row="2"
+                x:Name="subButton"
+                Text="Subscribe"
+                Clicked="subButton_Clicked"
+                HorizontalOptions="Center"/>
+
+    </Grid>
+</ContentPage>
